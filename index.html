@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+    <title>prediction Model</title>
+</head>
+<form action="{{ url_for('predict')}}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        PROD_CD:
+        <input name="PROD_CD" type="number" required="required" />
+        <br>
+        <br> SLSMAN_CD:
+        <input name="SLSMAN_CD" type="number" required="required" />
+        <br>
+        <br> MONTH:
+        <input name="PLAN_MONTH" type="number" required="required" />
+        <br>
+        <br> TARGET:
+        <input name="TARGET_IN_EA" type="number" required="required" />
+        <br>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+    	{% for variable, value in original_input.items() %}
+    		<b>{{ variable }}</b> : {{ value }}
+    	{% endfor %}
+		<br>
+    	<br> ACHIEVEMENT:
+   		<p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
